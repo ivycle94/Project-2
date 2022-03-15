@@ -23,13 +23,13 @@ router.use((req, res, next) => {
 // Routes
 
 // index VILLAGERS
-router.get('/', (req, res) => {
-    // res.send("This page is working")
-    res.render('villagers/index')	
-})
+// router.get('/', (req, res) => {
+//     // res.send("This page is working")
+//     res.render('villagers/index')	
+// })
 
-router.post("/", (req, res) => {
-    const villager = req.body.villager
+router.get("/", (req, res) => {
+    const villagers = req.body.villagers
     // const url = "http://acnhapi.com/v1/villagers"
     fetch("http://acnhapi.com/v1/villagers")
         .then(response => {
@@ -37,8 +37,8 @@ router.post("/", (req, res) => {
             return response.json()   
         })
         .then(data => {
-            // console.log(data)
-            // console.log('this is the first villager', data.name)
+            console.log(data)
+            res.render('villagers/index')
         })
         .catch(error => {
             console.log(error)
