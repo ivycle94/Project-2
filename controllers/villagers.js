@@ -20,16 +20,18 @@ router.use((req, res, next) => {
 	}
 })
 
-// Routes
+//============================================//
+// ROUTES                                 
+//============================================//
 
+// INDEX ROUTE ------------------------------/
 // index VILLAGERS
 // router.get('/', (req, res) => {
 //     // res.send("This page is working")
 //     res.render('villagers/index')	
 // })
-
 router.get("/", (req, res) => {
-    const villagers = req.body.villagers
+    // const villagers = req.body.villagers
     // const url = "http://acnhapi.com/v1/villagers"
     fetch("http://acnhapi.com/v1/villagers")
         .then(response => {
@@ -37,8 +39,14 @@ router.get("/", (req, res) => {
             return response.json()   
         })
         .then(data => {
-            console.log(data)
-            res.render('villagers/index')
+            const username = req.session.username
+			const loggedIn = req.session.loggedIn
+            // method returns an array of a given object's own enumerable property values, in the same order
+            let animalData = Object.values(data)
+            console.log("first villager in the array:", animalData[0])
+            res.render('villagers/index', { animalData : animalData, username, loggedIn })
+            // to test if index page shows user logged in since index.liquid was emptyand couldnt test it that way
+            // res.json({ animalData, username, loggedIn })
         })
         .catch(error => {
             console.log(error)
@@ -46,7 +54,7 @@ router.get("/", (req, res) => {
         })
 })
 
-// show route
+// SHOW ROUTE ------------------------------/
 // router.get('/:id', (req, res) => {
 //     // res.send("this page is working")
 // 	const exampleId = req.params.id

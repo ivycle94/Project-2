@@ -3,23 +3,10 @@
 <div>
     <h2 class="display-6"> All Villagers</h2>
     <div class="row">
-        {% for example in examples %}
+        {% for animal in animalData %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ example.title }}</h5>
-            <div class="card-body">
-                <h5 class="card-title">
-                    Ready?: {{ example.ready }}
-                </h5>
-                <p class="card-text">
-                    Body: {{ example.body }}
-                </p>
-                <p class="card-text">
-                    Amount: {{ example.amount }}
-                </p>
-                <a href="/examples/{{ example.id }}" class="btn btn-info">
-                    View {{ example.title }}
-                </a>
-            </div>
+            <h5 class="card-header">{{ animal["name"]["name-USen"] }}</h5>
+            <img src="{{ animal["icon_uri"] }}" width="50" height="50">
         </div>
         {% endfor %}
     </div>
