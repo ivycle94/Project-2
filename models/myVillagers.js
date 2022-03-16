@@ -8,31 +8,31 @@ const User = require('./user')
 const { Schema, model } = mongoose
 
 const myVillagersSchema = new Schema(
-	{
-        personality: {String, required: true},
-        birthdayString: {String, required: true},
-        species: {String, required: true},
-        gender: {String, required: true},
-        subtype: {String, required: true},
-        hobby: {String, required: true},
-        catchPhrase: {String, required: true},
-        iconUrl: {String, required: true},
-        imgUrl: {String, required: true},
-        bubbleColor: {String, required: true},
-        textColor: {String, required: true},
-        saying: {String, required: true},
-		hasOwned: { type: Boolean, required: true },
-		owner: {
-			type: Schema.Types.ObjectID,
-			ref: 'User',
-		}
-	},
+    {
+        personality: {type:String, required: true},
+        birthdayString: {type:String, required: true},
+        species: {type:String, required: true},
+        gender: {type:String, required: true},
+        subtype: {type:String, required: true},
+        hobby: {type:String, required: true},
+        catchPhrase: {type:String, required: true},
+        iconUrl: {type:String, required: true},
+        imgUrl: {type:String, required: true},
+        bubbleColor: {type:String, required: true},
+        textColor: {type:String, required: true},
+        saying: {type:String, required: true},
+        hasOwned: { type: Boolean, required: true },
+        owner: {
+            type: Schema.Types.ObjectID,
+            ref: 'User',
+        }
+    },
 	{ timestamps: true }
 )
 
-const myVillagers = model('myVillagers', myVillagersSchema)
+const MyVillagers = model('MyVillagers', myVillagersSchema)
 
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = Example
+module.exports = MyVillagers

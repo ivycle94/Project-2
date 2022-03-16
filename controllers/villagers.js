@@ -32,7 +32,7 @@ router.use((req, res, next) => {
 //============================================//
 
 // INDEX ROUTE ------------------------------/
-// index VILLAGERS
+// [[ All Villagers -> index ]]
 // router.get('/', (req, res) => {
 //     // res.send("This page is working")
 //     res.render('villagers/index')	
@@ -61,6 +61,28 @@ router.get("/", (req, res) => {
             res.json({error})
         })
 })
+
+// [[ USER's Villagers -> index ]]
+router.get('/my_villagers', (req, res) => {
+    //** */ promise chain that pulls up the user's villagers(for later) **//
+    // MyVillagers.find({ owner: req.session.userId })
+		// .then((villagers) => {
+			const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			res.render('myVillagers/index', { username, loggedIn })
+                                        // ^ remember to add the ref to vilager in curly brackets later
+		// })
+		// show an error if there is one
+		// .catch((error) => {
+		// 	console.log(error)
+		// 	res.json({ error })
+		// })
+})
+
+// api ---> local db
+// POST route
+// Can make form (can hide the form-> input type= hidden)
+// info for form is in get(fetch) route
 
 // SHOW ROUTE ------------------------------/
 router.get('/:id', (req, res) => {
