@@ -1,12 +1,19 @@
-// Import Dependencies
+//============================================//
+// Import Dependencies                   
+//============================================//
 const express = require('express')
 const fetch = require('node-fetch')
+// api page, dont need a model
 // const Example = require('../models/example')
 
-// Create router
+//============================================//
+// Create Router              
+//============================================//
 const router = express.Router()
 
-// Router Middleware
+//============================================//
+// Router Middleware               
+//============================================//
 // Authorization middleware
 // If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
 router.use((req, res, next) => {
@@ -43,7 +50,7 @@ router.get("/", (req, res) => {
 			const loggedIn = req.session.loggedIn
             // method returns an array of a given object's own enumerable property values, in the same order
             let animalData = Object.values(data)
-            console.log("first villager in the array:", animalData[0])
+            // console.log("first villager in the array:", animalData[0])
             res.render('villagers/index', { animalData : animalData, username, loggedIn })
             // to test if index page shows user logged in since index.liquid was emptyand couldnt test it that way
             // res.json({ animalData, username, loggedIn })
@@ -55,18 +62,26 @@ router.get("/", (req, res) => {
 })
 
 // SHOW ROUTE ------------------------------/
-// router.get('/:id', (req, res) => {
-//     // res.send("this page is working")
-// 	const exampleId = req.params.id
-// 	Example.findById(exampleId)
-// 		.then(example => {
-//             const {username, loggedIn, userId} = req.session
-// 			res.render('examples/show', { example, username, loggedIn, userId })
-// 		})
-// 		.catch((error) => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
+router.get('/:id', (req, res) => {
+    // res.send("this page is working")
+	const exampleId = req.params.id
+    fetch("http://acnhapi.com/v1/villagers")
+    .then(response => {
+        return response.json()   
+    })
+    .then(data => {
+        const username = req.session.username
+        const loggedIn = req.session.loggedIn
+        let animalData = Object.values(data)
+        res.render('villagers/show', { animal : animalData, username, loggedIn })
+    })
+    .catch(error => {
+        console.log(error)
+        res.json({error})
+    })
+})
 
-// Export the Router
+//============================================//
+//   EXPORT ROUTER
+//============================================//
 module.exports = router

@@ -3,10 +3,12 @@
 <div>
     <h2 class="display-6"> All Villagers</h2>
     <div class="row">
-        {% for animal in animalData %}
+        {% for animal in animalData limit:50 %}
         <div class="card" style="width: 18rem;">
             <h5 class="card-header">{{ animal["name"]["name-USen"] }}</h5>
-            <img src="{{ animal["icon_uri"] }}" width="50" height="50">
+            <a href="/villagers/{{ animal["id"]}}">
+                <img src="{{ animal["icon_uri"] }}" width="80" height="80">
+            </a>
         </div>
         {% endfor %}
     </div>
