@@ -49,6 +49,7 @@ router.get("/", (req, res) => {
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
             // method returns an array of a given object's own enumerable property values, in the same order
+            // great for objects with a lot of elements
             let animalData = Object.values(data)
             // console.log("first villager in the array:", animalData[0])
             res.render('villagers/index', { animalData : animalData, username, loggedIn })
@@ -64,16 +65,18 @@ router.get("/", (req, res) => {
 // SHOW ROUTE ------------------------------/
 router.get('/:id', (req, res) => {
     // res.send("this page is working")
-	const exampleId = req.params.id
-    fetch("http://acnhapi.com/v1/villagers")
+	const animalId = req.params.id
+    fetch(`http://acnhapi.com/v1/villagers/${animalId}`)
     .then(response => {
         return response.json()   
     })
     .then(data => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
-        let animalData = Object.values(data)
-        res.render('villagers/show', { animal : animalData, username, loggedIn })
+        // dont need Object.value() because you're only dealing with one thing
+        // let animalData = Object.values(data)
+        console.log(data)
+        res.render('villagers/show', { animal : data, username, loggedIn })
     })
     .catch(error => {
         console.log(error)

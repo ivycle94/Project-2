@@ -1,8 +1,18 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-md">
+    <!-- <h1>TEST</h1> -->
    <h1>{{ animal["name"]["name-USen"] }}</h1>
-   <img src="{{ animal["icon_uri"] }}" width="80" height="80">
-   <p>{{ anime["personality"] }}</p>
+   <img src="{{ animal["image_uri"] }}" width="300" height="300">
+   <p>Personality: {{ animal["personality"] }}</p>
+   <p>Birthday: {{ animal["birthday-string"] }}</p>
+   <p>Species: {{ animal["species"] }}</p>
+   <p>Gender: {{ animal["gender"] }}</p>
+   <p>Subtype: {{ animal["subtype"] }}</p>
+   <p>Hobby: {{ animal["hobby"] }}</p>
+   <p>Catch Phrase: {{ animal["catch-prhase"] }}</p>
+   <p>Bubble Color: {{ animal["bubble-color"] }}</p>
+   <p>Text Color: {{ animal["text-color"] }}</p>
+   <p>Saying: {{ animal["saying"] }}</p>
 </div>
 {% endblock %}
