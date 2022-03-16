@@ -9,6 +9,7 @@ const { Schema, model } = mongoose
 
 const myVillagersSchema = new Schema(
     {
+        name: {type:String, required: true},
         personality: {type:String, required: true},
         birthdayString: {type:String, required: true},
         species: {type:String, required: true},
@@ -21,7 +22,8 @@ const myVillagersSchema = new Schema(
         bubbleColor: {type:String, required: true},
         textColor: {type:String, required: true},
         saying: {type:String, required: true},
-        hasOwned: { type: Boolean, required: true },
+        // hasOwned: { type: Boolean, required: true },
+        // unsure atm, will thinking about later ^^^
         owner: {
             type: Schema.Types.ObjectID,
             ref: 'User',
