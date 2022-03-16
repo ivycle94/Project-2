@@ -2,9 +2,9 @@
 {% block content %}
 <div>
     <h2 class="display-6"> All Villagers</h2>
-    <div class="row">
+    <div class="row all-villagers">
         {% for animal in animalData limit:50 %}
-        <div class="card" style="width: 18rem;">
+        <div class="card cb1">
             <h5 class="card-header">{{ animal["name"]["name-USen"] }}</h5>
             <a href="/villagers/{{ animal["id"]}}">
                 <img src="{{ animal["icon_uri"] }}" width="80" height="80">
