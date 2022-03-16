@@ -4,7 +4,11 @@
 require("dotenv").config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
+//check
 const VillagersRouter = require('./controllers/villagers')
+//check
+const MyVillagersRouter = require('./controllers/myVillagers')
+//check
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
@@ -21,8 +25,12 @@ middleware(app)
 //    Routes      //
 ////////////////////
 
+//check
 app.use('/auth', UserRouter)
+//check
 app.use('/villagers', VillagersRouter)
+//check
+app.use('/my_villagers', MyVillagersRouter)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
