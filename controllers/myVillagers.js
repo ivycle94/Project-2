@@ -34,8 +34,10 @@ router.use((req, res, next) => {
 // INDEX ROUTE ------------------------------/
 // index my villagers (favorites)
 router.get('/', (req, res) => {
-    res.send("This page is working")
-    // res.render('villagers/index')	
+    const username = req.session.username
+	const loggedIn = req.session.loggedIn
+    // res.send("This page is working")
+    res.render('myVillagers/index', { username, loggedIn })	
 })
 
 
