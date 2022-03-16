@@ -10,7 +10,7 @@ const { Schema, model } = mongoose
 const myVillagersSchema = new Schema(
     {
         name: {type:String, required: true},
-        // personality: {type:String, required: true},
+        personality: {type:String, required: true},
         // birthdayString: {type:String, required: true},
         // species: {type:String, required: true},
         // gender: {type:String, required: true},

@@ -70,30 +70,30 @@ router.post('/my_villagers', (req, res) => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
             req.body.owner = req.session.userId
+
             let animoo = req.body
-            let animooName = animoo.name
+            let name = animoo.name
+            let personality = animoo.personality
             // console.log(animoo)
             MyVillagers.create(animoo)
             .then(animoo => {
-                console.log("villager added to user's list:", animooName)
-                res.render('myVillagers/index', { animalData, username, loggedIn })
+                console.log("villager added to user's list:",
+                {
+                    name,
+                    personality
+                })
+                res.redirect("/villagers")
+                // res.render('myVillagers/index', { animalData, username, loggedIn })
             })
             .catch(error => {
                 console.log(error)
-            })
-			
+            })	
 		})
-        
 		.catch((error) => {
 			// console.log(error)
 			// res.json({ error })
 		})
 })
-
-// api ---> local db
-// POST route
-// Can make form (can hide the form-> input type= hidden)
-// info for form is in get(fetch) route
 
 // SHOW ROUTE ------------------------------/
 router.get('/:id', (req, res) => {
