@@ -4,7 +4,7 @@
 const express = require('express')
 const fetch = require('node-fetch')
 // api page, dont need a model
-// const Example = require('../models/example')
+const MyVillagers = require('../models/myVillagers')
 
 //============================================//
 // Create Router              
@@ -63,20 +63,20 @@ router.get("/", (req, res) => {
 })
 
 // [[ USER's Villagers -> index ]]
-router.get('/my_villagers', (req, res) => {
+router.post('/my_villagers', (req, res) => {
     //** */ promise chain that pulls up the user's villagers(for later) **//
-    // MyVillagers.find({ owner: req.session.userId })
-		// .then((villagers) => {
+    MyVillagers.find({ owner: req.session.userId })
+		.then((animalData) => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			res.render('myVillagers/index', { username, loggedIn })
-                                        // ^ remember to add the ref to vilager in curly brackets later
-		// })
-		// show an error if there is one
-		// .catch((error) => {
-		// 	console.log(error)
-		// 	res.json({ error })
-		// })
+            req.body.owner = req.session.userId
+            // console.log(req.body)
+			res.render('myVillagers/index', { animalData, username, loggedIn })
+		})
+		.catch((error) => {
+			// console.log(error)
+			// res.json({ error })
+		})
 })
 
 // api ---> local db

@@ -8,6 +8,28 @@
             <h5 class="card-header">{{ animal["name"]["name-USen"] }}</h5>
             <a href="/villagers/{{ animal["id"]}}">
                 <img src="{{ animal["icon_uri"] }}" width="80" height="80">
+                <!-----------test form to push api data to local------------->
+                
+            <div class="container-sm">
+                <form action="/villagers/my_villagers" method="POST">
+                    <fieldset>
+                        <!-- <label class="form-label"><Name: ></label> -->
+                            <input 
+                                type="hidden" 
+                                name= "name"
+                                value={{animal["name"]["name-USen"]}}
+                                placeholder="enter fruit name"
+                                class="form-control"
+                            >
+                    </fieldset>
+                    <input 
+                        type="submit" 
+                        value="Favorite"
+                        class="btn btn-success"
+                    >
+                </form>
+            </div>
+                <!------------------- end of test form --------------------->
             </a>
         </div>
         {% endfor %}
