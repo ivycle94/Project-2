@@ -70,9 +70,20 @@ router.post('/my_villagers', (req, res) => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
             req.body.owner = req.session.userId
-            // console.log(req.body)
-			res.render('myVillagers/index', { animalData, username, loggedIn })
+            let animoo = req.body
+            let animooName = animoo.name
+            // console.log(animoo)
+            MyVillagers.create(animoo)
+            .then(animoo => {
+                console.log("villager added to user's list:", animooName)
+                res.render('myVillagers/index', { animalData, username, loggedIn })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+			
 		})
+        
 		.catch((error) => {
 			// console.log(error)
 			// res.json({ error })
