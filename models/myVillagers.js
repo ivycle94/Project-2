@@ -11,17 +11,19 @@ const myVillagersSchema = new Schema(
     {
         name: {type:String, required: true},
         personality: {type:String, required: true},
-        // birthdayString: {type:String, required: true},
-        // species: {type:String, required: true},
-        // gender: {type:String, required: true},
-        // subtype: {type:String, required: true},
-        // hobby: {type:String, required: true},
-        // catchPhrase: {type:String, required: true},
-        // iconUrl: {type:String, required: true},
-        // imgUrl: {type:String, required: true},
-        // bubbleColor: {type:String, required: true},
-        // textColor: {type:String, required: true},
-        // saying: {type:String, required: true},
+        birthday: {type:String, required: true}, 
+        //* doesn't log the num # after month *//
+        //birthday: {type:[String], required: true, default:[]} <-- doesn't work
+        species: {type:String, required: true},
+        gender: {type:String, required: true},
+        subtype: {type:String, required: true},
+        hobby: {type:String, required: true},
+        catchPhrase: {type:String, required: true},
+        iconUrl: {type:String, required: true}, 
+        imgUrl: {type:String, required: true},
+        bubbleColor: {type:String, required: true},
+        textColor: {type:String, required: true},
+        saying: {type:String, required: true},
         // hasOwned: { type: Boolean, required: true },
         // unsure atm, will thinking about later ^^^
         owner: {

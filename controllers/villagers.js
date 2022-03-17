@@ -71,16 +71,42 @@ router.post('/my_villagers', (req, res) => {
 			const loggedIn = req.session.loggedIn
             req.body.owner = req.session.userId
 
+            // assign vars that match with the schema and form (villagers/index.js)
             let animoo = req.body
             let name = animoo.name
             let personality = animoo.personality
+            let birthday = animoo.birthday
+            //let birthday = animoo.birthday.join("") <-- doesn't work
+            let species = animoo.species
+            let gender = animoo.gender
+            let subtype = animoo.subtype
+            let hobby = animoo.hobby
+            let catchPhrase = animoo.catchPhrase
+            let iconUrl = animoo.iconUrl
+            let imgUrl = animoo.imgUrl
+            let bubbleColor = animoo.bubbleColor
+            let textColor = animoo.textColor
+            let saying = animoo.saying
+            //let saying = animoo.saying <-- doesn't work
             // console.log(animoo)
             MyVillagers.create(animoo)
             .then(animoo => {
                 console.log("villager added to user's list:",
                 {
                     name,
-                    personality
+                    personality,
+                    birthday,
+                    species,
+                    gender,
+                    subtype,
+                    hobby,
+                    catchPhrase,
+                    iconUrl,
+                    imgUrl,
+                    bubbleColor,
+                    textColor,
+                    saying
+                    
                 })
                 res.redirect("/villagers")
                 // res.render('myVillagers/index', { animalData, username, loggedIn })
