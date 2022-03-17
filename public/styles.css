@@ -2,6 +2,15 @@ body {
     background: url("https://i.imgur.com/GOobOL5.png");
     font-family: 'Quicksand', sans-serif;;
 }
+.nav-custom {
+    background-color: rgba(62,152,145); 
+}
+
+.fav-button {
+    text-align: center;
+    color:black;
+    background-color: rgba(62,152,145);
+}
 
 .all-villagers {
     display: flex;
@@ -9,6 +18,7 @@ body {
     align-items: center;
 }
 
+/* STYLING FOR CARDS ON INDEX VILLAGERS PAGE */
 .card {
     display: flex;
     text-align: center;
@@ -27,6 +37,7 @@ body {
    
 }
 
+/* STYLING FOR DIV ON LOGIN PAGE */
 .login-area {
     display: flex;
     justify-content: center;

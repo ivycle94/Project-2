@@ -112,7 +112,8 @@ router.post('/my_villagers', (req, res) => {
                 // res.render('myVillagers/index', { animalData, username, loggedIn })
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
+			// res.json({ error })
             })	
 		})
 		.catch((error) => {
