@@ -50,7 +50,15 @@ router.get("/", (req, res) => {
 			const loggedIn = req.session.loggedIn
             // method returns an array of a given object's own enumerable property values, in the same order
             // great for objects with a lot of elements
-            let animalData = Object.values(data)
+            // console.log("this is before the object.values()", data)
+            // let animaData = Object.value(data) <-- also tried this
+            let animalData = []
+            Object.keys(data).forEach(key => {
+                animalData.push(data[key])
+                // animalData.push(JSON.stringify(data[key]))
+            })
+            // console.log("this is animalData", animalData[0].saying)
+            // console.log("this is after objects.value", animalData)
             // console.log("first villager in the array:", animalData[0])
             res.render('villagers/index', { animalData : animalData, username, loggedIn })
             // to test if index page shows user logged in since index.liquid was emptyand couldnt test it that way
@@ -63,64 +71,76 @@ router.get("/", (req, res) => {
 })
 
 // [[ USER's Villagers -> index ]]
-router.post('/my_villagers', (req, res) => {
-    //** */ promise chain that pulls up the user's villagers(for later) **//
-    MyVillagers.find({ owner: req.session.userId })
-		.then((animalData) => {
-			const username = req.session.username
-			const loggedIn = req.session.loggedIn
-            req.body.owner = req.session.userId
+//get my villagers
+router.get('/my_villagers', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	MyVillagers.find({ owner: userId })
+		.then(MyVillagers => {
+            
+			res.render('myVillagers/index', { MyVillagers, username, loggedIn })
+        // console.log(MyVillagers)
 
-            // assign vars that match with the schema and form (villagers/index.js)
-            let animoo = req.body
-            let name = animoo.name
-            let personality = animoo.personality
-            let birthday = animoo.birthday
-            //let birthday = animoo.birthday.join("") <-- doesn't work
-            let species = animoo.species
-            let gender = animoo.gender
-            let subtype = animoo.subtype
-            let hobby = animoo.hobby
-            let catchPhrase = animoo.catchPhrase
-            let iconUrl = animoo.iconUrl
-            let imgUrl = animoo.imgUrl
-            let bubbleColor = animoo.bubbleColor
-            let textColor = animoo.textColor
-            let saying = animoo.saying
-            //let saying = animoo.saying <-- doesn't work
-            // console.log(animoo)
-            MyVillagers.create(animoo)
-            .then(animoo => {
-                console.log("villager added to user's list:",
-                {
-                    name,
-                    personality,
-                    birthday,
-                    species,
-                    gender,
-                    subtype,
-                    hobby,
-                    catchPhrase,
-                    iconUrl,
-                    imgUrl,
-                    bubbleColor,
-                    textColor,
-                    saying
-                    
-                })
-                res.redirect("/villagers")
-                // res.render('myVillagers/index', { animalData, username, loggedIn })
-            })
-            .catch(error => {
-                // console.log(error)
-			// res.json({ error })
-            })	
 		})
-		.catch((error) => {
-			// console.log(error)
-			// res.json({ error })
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
 		})
 })
+//post on my villagers
+router.post('/my_villagers', (req, res) => {
+    //** */ promise chain that pulls up the user's villagers(for later) **//
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    req.body.owner = req.session.userId
+
+    // assign vars that match with the schema and form (villagers/index.js)
+    let animoo = req.body
+    console.log("this is animoo",animoo)
+    let name = animoo.name
+    let personality = animoo.personality
+    let birthday = animoo.birthday
+    //let birthday = animoo.birthday.join("") <-- doesn't work
+    let species = animoo.species
+    let gender = animoo.gender
+    let subtype = animoo.subtype
+    let hobby = animoo.hobby
+    let catchPhrase = animoo.catchPhrase
+    let iconUrl = animoo.iconUrl
+    let imgUrl = animoo.imgUrl
+    let bubbleColor = animoo.bubbleColor
+    let textColor = animoo.textColor
+    let saying = animoo[ 'saying' ] 
+    //let saying = animoo.saying <-- doesn't work
+    // console.log(animoo)
+    MyVillagers.create(animoo)
+        .then(animoo => {
+            console.log("villager added to user's list:",
+            {
+                name,
+                personality,
+                birthday,
+                species,
+                gender,
+                subtype,
+                hobby,
+                catchPhrase,
+                iconUrl,
+                imgUrl,
+                bubbleColor,
+                textColor,
+                saying
+                
+            })
+            res.redirect("/villagers")
+            // res.redirect('/villagers', { animalData, username, loggedIn })
+
+        })
+        .catch(error => {
+            console.log(error)
+            res.json({ error })
+    })	
+    console.log(animoo)
+})	
 
 // SHOW ROUTE ------------------------------/
 router.get('/:id', (req, res) => {
