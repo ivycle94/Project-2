@@ -8,8 +8,8 @@ body {
 
 .fav-button {
     text-align: center;
-    color:black;
-    background-color: rgba(62,152,145);
+    color:whitesmoke;
+    background-color: rgba(62,152,145, 0.9); 
 }
 
 .all-villagers {
