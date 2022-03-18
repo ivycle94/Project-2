@@ -7,6 +7,7 @@
     <h1>NAME:{{ animoo.name }}</h1>
     <h1>BDAY:{{ animoo.birthday }}</h1>
     <h1>SPECIES{{ animoo.species }}</h1>
+    <!-- <h1>NOTE:{{ animoo.note[0].body }}</h1> -->
     <a href="/villagers/my_villagers/{{ animoo.id }}/edit" class="btn btn-primary">Edit</a>
     <form action="/villagers/my_villagers/{{animoo.id}}?_method=DELETE" method="POST">
         <input type="submit" value="Delete" class="btn btn-danger">
@@ -22,6 +23,19 @@
             <input type="submit" class="btn btn-success" value="Add Note">
         </form>
     </div>
+
+    {% if animoo.note.length > 0%}
+            <!-- here we'll add our comment container -->
+            <div class="container-sm justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <!-- here we need to loop over the comments -->
+                    <!-- for every comment render a comment.liquid block -->
+                    {% for text in animoo.note %}
+                        {% render '../note.liquid', text: text, userId: userId, animoo: animoo %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
     
 
 {% endblock %}

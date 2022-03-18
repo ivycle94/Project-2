@@ -199,13 +199,14 @@ router.get("/my_villagers/:id", (req, res) => {
     const animooId = req.params.id
     // console.log("This is animooId for show\n",animooId)
     MyVillagers.findById(animooId)
+        .populate("note.author", "username")
         .then(animoo => {
             // console.log("the animoo we're looking at", animoo)
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			const userId = req.session.userId
 
-            
+            console.log(animoo)
 			res.render('myVillagers/show', { animoo, username, loggedIn, userId })
         })
         .catch(error => {
