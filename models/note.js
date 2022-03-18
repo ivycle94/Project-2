@@ -9,13 +9,23 @@ const { Schema, model } = mongoose
 
 const noteSchema = new Schema(
 	{
-		title: { type: String, required: true },
-		body: { type: String, required: true },
-        amount: { type: Number, required: true },
-		ready: { type: Boolean, required: true },
-		owner: {
+		title: { 
+            type: String, 
+            required: true 
+        },
+		body: {
+             type: String,
+              required: true 
+        },
+		hasOwned: {
+             type: Boolean,
+              required: true,
+               default:false 
+        },
+		author: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
+            required: true
 		}
 	},
 	{ timestamps: true }
