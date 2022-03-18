@@ -6,8 +6,8 @@
         {% for animal in animalData limit:50 %}
         <div class="card cb1">
             <h5 class="card-header">{{ animal["name"]["name-USen"] }}</h5>
-            <a href="/villagers/{{ animal["id"]}}">
-                <img src="{{ animal["icon_uri"] }}" width="80" height="80">
+            <a  href="/villagers/{{ animal["id"]}}">
+                <img id="villager-icon-link" src="{{ animal["icon_uri"] }}" width="80" height="80">
                 <!-----------test form to push api data to local------------->
                 
             <div class="container-sm">
