@@ -32,19 +32,19 @@ router.use((req, res, next) => {
 
 //--- POST ROUTE ----------------------------//
 // [[ USER's Villagers -> show ]]------------//
-router.post("/villagers/my_villagers/:animooId", (req, res) => {
-    const animooId = req.params.animooId
-    console.log('This is animooId:\n', animooId)
+router.post("/villagers/my_villagers/:villagerId", (req, res) => {
+    const villagerId = req.params.villagerId
+    // console.log('This is villagerId:\n', villagerId)
     req.body.author = req.session.userId
-    MyVillagers.findById(animooId)
-        .then(animoo => {
+    MyVillagers.findById(villagerId)
+        .then(villager => {
             // then we'll send req.body to the comments array
-            animoo.note.push(req.body)
+            villager.note.push(req.body)
             // save the fruit
-            return animoo.save()
+            return villager.save()
         })
-        .then(animoo=> {
-            res.redirect(`/villagers/my_villagers/${animoo.id}`)
+        .then(villager=> {
+            res.redirect(`/villagers/my_villagers/${villager.id}`)
         })
         // or show an error if we have one
         .catch(error => {
@@ -53,6 +53,39 @@ router.post("/villagers/my_villagers/:animooId", (req, res) => {
         })
 })
 
+//--- DELETE ROUTE ---------------------------//
+// [[ USER's Villagers -> delete ]]-----------//
+router.delete('/delete/:villager/:commId', (req, res) => {
+    // first we want to parse out our ids
+    const villagerId = req.params.villagerId
+    const noteId = req.params.villager
+    // then we'll find the fruit
+    MyVillagers.findById(villagerId)
+        .then(villager => {
+            console.log("this is the villager note", villager.text)
+            const theNote = villager.body.id(noteId)
+            console.log("this si the note id",theNote)
+            // only delete the comment if the user who is logged in is the comment's author
+            if ( theNote.author == req.session.userId) {
+                // then we'll delete the comment
+                theNote.remove()
+                // return the saved fruit
+                return villager.save()
+            } else {
+                return
+            }
+
+        })
+        .then(villager => {
+            // redirect to the fruit show page
+            res.redirect(`/villagers/my_villagers/${villager.id}`)
+        })
+        .catch(error => {
+            // catch any errors
+            console.log(error)
+            res.send(error)
+        })
+})
 
 //============================================//
 //   EXPORT ROUTER

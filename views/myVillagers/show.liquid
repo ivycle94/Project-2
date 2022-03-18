@@ -2,19 +2,19 @@
 {% block content %}
 
     <h1>MY VILLAGERS SHOW.LIQUID</h1>
-    <img src="{{ animoo.iconUrl }}" width="80" height="80">
-    <img src="{{ animoo.imgUrl }}" width="80" height="80">
-    <h1>NAME:{{ animoo.name }}</h1>
-    <h1>BDAY:{{ animoo.birthday }}</h1>
-    <h1>SPECIES{{ animoo.species }}</h1>
-    <!-- <h1>NOTE:{{ animoo.note[0].body }}</h1> -->
-    <a href="/villagers/my_villagers/{{ animoo.id }}/edit" class="btn btn-primary">Edit</a>
-    <form action="/villagers/my_villagers/{{animoo.id}}?_method=DELETE" method="POST">
+    <img src="{{ villager.iconUrl }}" width="80" height="80">
+    <img src="{{ villager.imgUrl }}" width="80" height="80">
+    <h1>NAME:{{ villager.name }}</h1>
+    <h1>BDAY:{{ villager.birthday }}</h1>
+    <h1>SPECIES{{ villager.species }}</h1>
+    <!-- <h1>NOTE:{{ villager.note[0].body }}</h1> -->
+    <a href="/villagers/my_villagers/{{ villager.id }}/edit" class="btn btn-primary">Edit</a>
+    <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
         <input type="submit" value="Delete" class="btn btn-danger">
     </form>
 
     <div class="col-md-6">
-        <form action="/note/villagers/my_villagers/{{ animoo.id }}" method="POST">
+        <form action="/note/villagers/my_villagers/{{ villager.id }}" method="POST">
             <fieldset>
                 <legend>Add Note</legend>
                 <label class="form-label">Note: </label>
@@ -24,14 +24,14 @@
         </form>
     </div>
 
-    {% if animoo.note.length > 0%}
+    {% if villager.note.length > 0%}
             <!-- here we'll add our comment container -->
             <div class="container-sm justify-content-center">
                 <div class="col-md-8 col-lg-6">
                     <!-- here we need to loop over the comments -->
                     <!-- for every comment render a comment.liquid block -->
-                    {% for text in animoo.note %}
-                        {% render '../note.liquid', text: text, userId: userId, animoo: animoo %}
+                    {% for text in villager.note %}
+                        {% render '../note.liquid', text: text, userId: userId, villager: villager %}
                     {% endfor %}
                 </div>
             </div>

@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-between">
                 <small>author: {{ text.author.username }}</small>
                 {% if text.author == userId %}
-                    <form action="/comments/delete/{{ animoo.id }}/{{ text.id }}?_method=DELETE" method="POST">
+                    <form action="/note/delete/{{ villager.id }}/{{ text.id }}?_method=DELETE" method="POST">
                         <input type="submit" value="X">
                     </form>
                 {% endif %}

@@ -75,7 +75,6 @@ router.get('/my_villagers', (req, res) => {
             
 			res.render('myVillagers/index', { MyVillagers, username, loggedIn })
         // console.log(MyVillagers)
-
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -89,26 +88,26 @@ router.post('/my_villagers', (req, res) => {
     const loggedIn = req.session.loggedIn
     req.body.owner = req.session.userId
     // assign vars that match with the schema and form (villagers/index.js)
-    let animoo = req.body
-    console.log("this is animoo",animoo)
-    let name = animoo.name
-    let personality = animoo.personality
-    let birthday = animoo.birthday
-    //let birthday = animoo.birthday.join("") <-- doesn't work
-    let species = animoo.species
-    let gender = animoo.gender
-    let subtype = animoo.subtype
-    let hobby = animoo.hobby
-    let catchPhrase = animoo.catchPhrase
-    let iconUrl = animoo.iconUrl
-    let imgUrl = animoo.imgUrl
-    let bubbleColor = animoo.bubbleColor
-    let textColor = animoo.textColor
-    let saying = animoo[ 'saying' ] 
-    //let saying = animoo.saying <-- doesn't work
-    // console.log(animoo)
-    MyVillagers.create(animoo)
-        .then(animoo => {
+    let villager = req.body
+    console.log("this is villager",villager)
+    let name = villager.name
+    let personality = villager.personality
+    let birthday = villager.birthday
+    //let birthday = villager.birthday.join("") <-- doesn't work
+    let species = villager.species
+    let gender = villager.gender
+    let subtype = villager.subtype
+    let hobby = villager.hobby
+    let catchPhrase = villager.catchPhrase
+    let iconUrl = villager.iconUrl
+    let imgUrl = villager.imgUrl
+    let bubbleColor = villager.bubbleColor
+    let textColor = villager.textColor
+    let saying = villager[ 'saying' ] 
+    //let saying = villager.saying <-- doesn't work
+    // console.log(villager)
+    MyVillagers.create(villager)
+        .then(villager => {
             console.log("villager added to user's list:",
             {
                 name,
@@ -134,7 +133,7 @@ router.post('/my_villagers', (req, res) => {
             console.log(error)
             res.json({ error })
     })	
-    console.log(animoo)
+    console.log(villager)
 })	
 
 //--- EDIT ROUTE -----------------------------//
@@ -142,12 +141,12 @@ router.post('/my_villagers', (req, res) => {
 router.get('/my_villagers/:id/edit', (req, res) => {
 	// we need to get the id
     const { username, userId, loggedIn } = req.session
-	const animooId = req.params.id
-    // console.log("this is villager/animoo Id:\n", animooId)
-	MyVillagers.findById(animooId)
-		.then(animoo => {
-            // console.log("this is villager/animoo we are editing:\n", animooId)
-			res.render('myVillagers/edit', { animoo, username, loggedIn })
+	const villagerId = req.params.id
+    // console.log("this is villager/villager Id:\n", villagerId)
+	MyVillagers.findById(villagerId)
+		.then(villager => {
+            // console.log("this is villager/villager we are editing:\n", villagerId)
+			res.render('myVillagers/edit', { villager, username, loggedIn })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -158,11 +157,11 @@ router.get('/my_villagers/:id/edit', (req, res) => {
 //--- DELETE ROUTE ---------------------------//
 // [[ USER's Villagers -> delete ]]-----------//
 router.delete("/my_villagers/:id", (req, res) => {
-    const animooId = req.params.id
-    // console.log("this is villager id for DELETE\n", animooId)
-    MyVillagers.findByIdAndRemove(animooId)
-        .then(animoo => {
-            // console.log("The animoo we deleted\n", animooId)
+    const villagerId = req.params.id
+    // console.log("this is villager id for DELETE\n", villagerId)
+    MyVillagers.findByIdAndRemove(villagerId)
+        .then(villager => {
+            // console.log("The villager we deleted\n", villagerId)
             res.redirect("/villagers/my_villagers")
         })
         .catch(error => {
@@ -175,8 +174,8 @@ router.delete("/my_villagers/:id", (req, res) => {
 // [[ All Villagers -> show ]]----------------//
 router.get('/:id', (req, res) => {
     // res.send("this page is working")
-	const animalId = req.params.id
-    fetch(`http://acnhapi.com/v1/villagers/${animalId}`)
+	const villagerId = req.params.id
+    fetch(`http://acnhapi.com/v1/villagers/${villagerId}`)
     .then(response => {
         return response.json()   
     })
@@ -186,7 +185,7 @@ router.get('/:id', (req, res) => {
         // dont need Object.value() because you're only dealing with one thing
         // let villagerArray = Object.values(data)
         console.log(data)
-        res.render('villagers/show', { animal : data, username, loggedIn })
+        res.render('villagers/show', { villager : data, username, loggedIn })
     })
     .catch(error => {
         console.log(error)
@@ -196,18 +195,18 @@ router.get('/:id', (req, res) => {
 
 // [[ USER's Villagers -> show ]]
 router.get("/my_villagers/:id", (req, res) => {
-    const animooId = req.params.id
-    // console.log("This is animooId for show\n",animooId)
-    MyVillagers.findById(animooId)
+    const villagerId = req.params.id
+    // console.log("This is villagerId for show\n",villagerId)
+    MyVillagers.findById(villagerId)
         .populate("note.author", "username")
-        .then(animoo => {
-            // console.log("the animoo we're looking at", animoo)
+        .then(villager => {
+            // console.log("the villager we're looking at", villager)
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			const userId = req.session.userId
 
-            console.log(animoo)
-			res.render('myVillagers/show', { animoo, username, loggedIn, userId })
+            console.log(villager)
+			res.render('myVillagers/show', { villager, username, loggedIn, userId })
         })
         .catch(error => {
             console.log(error)
