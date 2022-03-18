@@ -137,6 +137,25 @@ router.post('/my_villagers', (req, res) => {
     console.log(animoo)
 })	
 
+
+//--- EDIT ROUTE -----------------------------/
+// [[ USER's Villagers -> edit ]]-------------/
+router.get('/my_villagers/:id/edit', (req, res) => {
+	// we need to get the id
+    const { username, userId, loggedIn } = req.session
+	const animooId = req.params.id
+    // console.log("this is villager/animoo Id:\n", animooId)
+	MyVillagers.findById(animooId)
+		.then(animoo => {
+            // console.log("this is villager/animoo we are editing:\n", animooId)
+			res.render('myVillagers/edit', { animoo, username, loggedIn })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+// User's villagers show <-update- edited form/
+
 //--- DELETE ROUTE ---------------------------/
 // [[ USER's Villagers -> delete ]]-----------/
 router.delete("/my_villagers/:id", (req, res) => {
