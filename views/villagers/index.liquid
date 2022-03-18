@@ -3,30 +3,30 @@
 <div>
     <h2 class="display-6"> All Villagers</h2>
     <div class="row all-villagers">
-        {% for animal in animalData limit:50 %}
+        {% for villager in villagerArray limit:50 %}
         <div class="card cb1">
-            <h5 class="card-header">{{ animal["name"]["name-USen"] }}</h5>
-            <a  href="/villagers/{{ animal["id"]}}">
-                <img id="villager-icon-link" src="{{ animal["icon_uri"] }}" width="80" height="80">
+            <h5 class="card-header">{{villager["name"]["name-USen"] }}</h5>
+            <a  href="/villagers/{{ villager["id"]}}">
+                <img id="villager-icon-link" src="{{ villager["icon_uri"] }}" width="80" height="80">
                 <!-----------test form to push api data to local------------->
                 
             <div class="container-sm">
                 <form action="/villagers/my_villagers" method="POST">
                     <fieldset>
                         <!-- <label class="form-label">< Name: ></label> -->
-                            <input type="hidden" name= "name" value={{animal["name"]["name-USen"]}}>
-                            <input type="hidden" name= "personality" value={{ animal["personality"] }}>
-                            <input type="hidden" name= "birthday"value={{ animal["birthday-string"] }}>
-                            <input type="hidden" name= "species"value={{ animal["species"] }}>
-                            <input type="hidden" name= "gender" value={{ animal["gender"] }}>
-                            <input type="hidden" name= "subtype" value={{ animal["subtype"] }}> 
-                            <input type="hidden" name= "hobby" value={{ animal["hobby"] }}>
-                            <input type="hidden" name= "catchPhrase"value={{ animal["catch-phrase"] }}>
-                            <input type="hidden" name= "iconUrl" value={{ animal["icon_uri"] }}>
-                            <input type="hidden" name= "imgUrl" value={{ animal["image_uri"] }}> 
-                            <input type="hidden" name= "bubbleColor" value={{ animal["bubble-color"] }}>
-                            <input type="hidden" name= "textColor" value={{ animal["text-color"] }}>
-                            <input type="hidden" name= "saying" value={{ animal[ 'saying' ] }}> 
+                            <input type="hidden" name= "name" value={{villager["name"]["name-USen"]}}>
+                            <input type="hidden" name= "personality" value={{ villager["personality"] }}>
+                            <input type="hidden" name= "birthday"value={{ villager["birthday-string"] }}>
+                            <input type="hidden" name= "species"value={{ villager["species"] }}>
+                            <input type="hidden" name= "gender" value={{ villager["gender"] }}>
+                            <input type="hidden" name= "subtype" value={{ villager["subtype"] }}> 
+                            <input type="hidden" name= "hobby" value={{ villager["hobby"] }}>
+                            <input type="hidden" name= "catchPhrase"value={{ villager["catch-phrase"] }}>
+                            <input type="hidden" name= "iconUrl" value={{ villager["icon_uri"] }}>
+                            <input type="hidden" name= "imgUrl" value={{ villager["image_uri"] }}> 
+                            <input type="hidden" name= "bubbleColor" value={{ villager["bubble-color"] }}>
+                            <input type="hidden" name= "textColor" value={{ villager["text-color"] }}>
+                            <input type="hidden" name= "saying" value={{ villager[ 'saying' ] }}> 
                     </fieldset>
                     <input 
                         type="submit" 

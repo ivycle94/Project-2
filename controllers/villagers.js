@@ -48,17 +48,17 @@ router.get("/", (req, res) => {
             // great for objects with a lot of elements
             // console.log("this is before the object.values()", data)
             // let animaData = Object.value(data) <-- also tried this
-            let animalData = []
+            let villagerArray = []
             Object.keys(data).forEach(key => {
-                animalData.push(data[key])
-                // animalData.push(JSON.stringify(data[key]))
+                villagerArray.push(data[key])
+                // villagerArray.push(JSON.stringify(data[key]))
             })
-            // console.log("this is animalData", animalData[0].saying)
-            // console.log("this is after objects.value", animalData)
-            // console.log("first villager in the array:", animalData[0])
-            res.render('villagers/index', { animalData : animalData, username, loggedIn })
+            // console.log("this is villagerArray", villagerArray[0].saying)
+            // console.log("this is after objects.value", villagerArray)
+            // console.log("first villager in the array:", villagerArray[0])
+            res.render('villagers/index', { villagerArray : villagerArray, username, loggedIn })
             // to test if index page shows user logged in since index.liquid was emptyand couldnt test it that way
-            // res.json({ animalData, username, loggedIn })
+            // res.json({ villagerArray, username, loggedIn })
         })
         .catch(error => {
             console.log(error)
@@ -127,7 +127,7 @@ router.post('/my_villagers', (req, res) => {
                 
             })
             res.redirect("/villagers")
-            // res.redirect('/villagers', { animalData, username, loggedIn })
+            // res.redirect('/villagers', { villagerArray, username, loggedIn })
 
         })
         .catch(error => {
@@ -184,7 +184,7 @@ router.get('/:id', (req, res) => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
         // dont need Object.value() because you're only dealing with one thing
-        // let animalData = Object.values(data)
+        // let villagerArray = Object.values(data)
         console.log(data)
         res.render('villagers/show', { animal : data, username, loggedIn })
     })
