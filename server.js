@@ -7,7 +7,7 @@ const middleware = require('./utils/middleware')
 //check
 const VillagersRouter = require('./controllers/villagers')
 //check
-// const MyVillagersRouter = require('./controllers/myVillagers')
+const NoteRouter = require('./controllers/note')
 //check
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
@@ -26,11 +26,11 @@ middleware(app)
 ////////////////////
 
 //check
-app.use('/auth', UserRouter)
-//check
 app.use('/villagers', VillagersRouter)
 //check
-// app.use('/my_villagers', MyVillagersRouter)
+app.use('/note', NoteRouter)
+//check
+app.use('/auth', UserRouter)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
