@@ -12,4 +12,16 @@
         <input type="submit" value="Delete" class="btn btn-danger">
     </form>
 
+    <div class="col-md-6">
+        <form action="/note/villagers/my_villagers/{{ animoo.id }}" method="POST">
+            <fieldset>
+                <legend>Add Note</legend>
+                <label class="form-label">Note: </label>
+                <input type="text" class="form-control" name="body" placeholder="Add a note...">
+            </fieldset>
+            <input type="submit" class="btn btn-success" value="Add Note">
+        </form>
+    </div>
+    
+
 {% endblock %}

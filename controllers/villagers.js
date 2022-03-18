@@ -31,8 +31,8 @@ router.use((req, res, next) => {
 // ROUTES                                 
 //============================================//
 
-//--- INDEX ROUTE ----------------------------/
-// [[ All Villagers -> index ]]---------------/
+//--- INDEX ROUTE ----------------------------//
+// [[ All Villagers -> index ]]---------------//
 router.get("/", (req, res) => {
     // const villagers = req.body.villagers
     // const url = "http://acnhapi.com/v1/villagers"
@@ -66,7 +66,7 @@ router.get("/", (req, res) => {
         })
 })
 
-// [[ USER's Villagers -> index ]]------------/
+// [[ USER's Villagers -> index ]]------------//
 router.get('/my_villagers', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
@@ -137,9 +137,8 @@ router.post('/my_villagers', (req, res) => {
     console.log(animoo)
 })	
 
-
-//--- EDIT ROUTE -----------------------------/
-// [[ USER's Villagers -> edit ]]-------------/
+//--- EDIT ROUTE -----------------------------//
+// [[ USER's Villagers -> edit ]]-------------//
 router.get('/my_villagers/:id/edit', (req, res) => {
 	// we need to get the id
     const { username, userId, loggedIn } = req.session
@@ -154,10 +153,10 @@ router.get('/my_villagers/:id/edit', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
-// User's villagers show <-update- edited form/
+// User's villagers show <-update- edited form//
 
-//--- DELETE ROUTE ---------------------------/
-// [[ USER's Villagers -> delete ]]-----------/
+//--- DELETE ROUTE ---------------------------//
+// [[ USER's Villagers -> delete ]]-----------//
 router.delete("/my_villagers/:id", (req, res) => {
     const animooId = req.params.id
     // console.log("this is villager id for DELETE\n", animooId)
@@ -172,8 +171,8 @@ router.delete("/my_villagers/:id", (req, res) => {
         })
 })
 
-//--- SHOW ROUTE -----------------------------/
-// [[ All Villagers -> show ]]----------------/
+//--- SHOW ROUTE -----------------------------//
+// [[ All Villagers -> show ]]----------------//
 router.get('/:id', (req, res) => {
     // res.send("this page is working")
 	const animalId = req.params.id
@@ -201,7 +200,7 @@ router.get("/my_villagers/:id", (req, res) => {
     // console.log("This is animooId for show\n",animooId)
     MyVillagers.findById(animooId)
         .then(animoo => {
-            console.log("the animoo we're looking at", animoo)
+            // console.log("the animoo we're looking at", animoo)
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			const userId = req.session.userId

@@ -3,7 +3,6 @@
 //============================================//
 const express = require('express')
 const fetch = require('node-fetch')
-// api page, dont need a model
 const MyVillagers = require('../models/myVillagers')
 
 //============================================//
@@ -31,7 +30,28 @@ router.use((req, res, next) => {
 // ROUTES                                 
 //============================================//
 
-
+//--- POST ROUTE ----------------------------//
+// [[ USER's Villagers -> show ]]------------//
+router.post("/villagers/my_villagers/:animooId", (req, res) => {
+    const animooId = req.params.animooId
+    console.log('This is animooId:\n', animooId)
+    req.body.author = req.session.userId
+    MyVillagers.findById(animooId)
+        .then(animoo => {
+            // then we'll send req.body to the comments array
+            animoo.note.push(req.body)
+            // save the fruit
+            return animoo.save()
+        })
+        .then(animoo=> {
+            res.redirect(`/villagers/my_villagers/${animoo.id}`)
+        })
+        // or show an error if we have one
+        .catch(error => {
+            console.log(error)
+            res.send(error)
+        })
+})
 
 
 //============================================//

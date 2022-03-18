@@ -2,25 +2,16 @@
 const mongoose = require('./connection')
 
 // import user model for populate
-const User = require('./user')
+// const User = require('./user')
 
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 
 const noteSchema = new Schema(
 	{
-		title: { 
+		body: { 
             type: String, 
             required: true 
-        },
-		body: {
-             type: String,
-              required: true 
-        },
-		hasOwned: {
-             type: Boolean,
-              required: true,
-               default:false 
         },
 		author: {
 			type: Schema.Types.ObjectID,
@@ -31,9 +22,9 @@ const noteSchema = new Schema(
 	{ timestamps: true }
 )
 
-const Note = model('Note', noteSchema)
+// const Note = model('Note', noteSchema)
 
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = Note
+module.exports = noteSchema
