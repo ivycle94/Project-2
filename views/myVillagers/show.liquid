@@ -7,7 +7,10 @@
     <h1>NAME:{{ villager.personality }}</h1>
     <h1>BDAY:{{ villager.birthday }}</h1>
     <h1>SPECIES{{ villager.species }}</h1>
-
+    <a href="/villagers/my_villagers/{{ villager.id }}/edit" class="btn btn-primary">Edit</a>
+    <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
+        <input type="submit" value="Delete" class="btn btn-danger">
+    </form>
 
 
 {% endblock %}
