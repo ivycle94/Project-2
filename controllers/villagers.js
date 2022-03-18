@@ -145,7 +145,7 @@ router.delete("/my_villagers/:id", (req, res) => {
     MyVillagers.findByIdAndRemove(animooId)
         .then(animoo => {
             console.log("this is villager we DELETED\n", animooId)
-            res.redirect("/my_villagers")
+            res.redirect("/my_villagers/show")
         })
         .catch(error => {
             console.log(error)

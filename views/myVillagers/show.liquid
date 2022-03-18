@@ -8,7 +8,7 @@
     <h1>BDAY:{{ animoo.birthday }}</h1>
     <h1>SPECIES{{ animoo.species }}</h1>
     <a href="/villagers/my_villagers/{{ animoo.id }}/edit" class="btn btn-primary">Edit</a>
-    <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
+    <form action="/villagers/my_villagers/{{animoo.id}}?_method=DELETE" method="POST">
         <input type="submit" value="Delete" class="btn btn-danger">
     </form>
 
