@@ -39,7 +39,7 @@ router.post("/villagers/my_villagers/:villagerId", (req, res) => {
     MyVillagers.findById(villagerId)
         .then(villager => {
             // then we'll send req.body to the comments array
-            villager.note.push(req.body)
+            villager.notes.push(req.body)
             // save the fruit
             return villager.save()
         })
@@ -58,17 +58,17 @@ router.post("/villagers/my_villagers/:villagerId", (req, res) => {
 router.delete('/delete/:villager/:commId', (req, res) => {
     // first we want to parse out our ids
     const villagerId = req.params.villagerId
-    const noteId = req.params.villager
+    const notesId = req.params.villager
     // then we'll find the fruit
     MyVillagers.findById(villagerId)
         .then(villager => {
-            console.log("this is the villager note", villager.text)
-            const theNote = villager.body.id(noteId)
-            console.log("this si the note id",theNote)
+            console.log("this is the villager notes", villager.note)
+            const theNotes = villager.body.id(notesId)
+            console.log("this si the notes id",theNotes)
             // only delete the comment if the user who is logged in is the comment's author
-            if ( theNote.author == req.session.userId) {
+            if ( theNotes.author == req.session.userId) {
                 // then we'll delete the comment
-                theNote.remove()
+                theNotes.remove()
                 // return the saved fruit
                 return villager.save()
             } else {

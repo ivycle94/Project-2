@@ -7,31 +7,31 @@
     <h1>NAME:{{ villager.name }}</h1>
     <h1>BDAY:{{ villager.birthday }}</h1>
     <h1>SPECIES{{ villager.species }}</h1>
-    <!-- <h1>NOTE:{{ villager.note[0].body }}</h1> -->
+    <!-- <h1>NOTEs:{{ villager.notes[0].body }}</h1> -->
     <a href="/villagers/my_villagers/{{ villager.id }}/edit" class="btn btn-primary">Edit</a>
     <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
         <input type="submit" value="Delete" class="btn btn-danger">
     </form>
 
     <div class="col-md-6">
-        <form action="/note/villagers/my_villagers/{{ villager.id }}" method="POST">
+        <form action="/notes/villagers/my_villagers/{{ villager.id }}" method="POST">
             <fieldset>
-                <legend>Add Note</legend>
-                <label class="form-label">Note: </label>
-                <input type="text" class="form-control" name="body" placeholder="Add a note...">
+                <legend>Add Notes</legend>
+                <label class="form-label">Notes: </label>
+                <input type="text" class="form-control" name="body" placeholder="Add a notes...">
             </fieldset>
-            <input type="submit" class="btn btn-success" value="Add Note">
+            <input type="submit" class="btn btn-success" value="Add Notes">
         </form>
     </div>
 
-    {% if villager.note.length > 0%}
+    {% if villager.notes.length > 0%}
             <!-- here we'll add our comment container -->
             <div class="container-sm justify-content-center">
                 <div class="col-md-8 col-lg-6">
                     <!-- here we need to loop over the comments -->
                     <!-- for every comment render a comment.liquid block -->
-                    {% for text in villager.note %}
-                        {% render '../note.liquid', text: text, userId: userId, villager: villager %}
+                    {% for note in villager.notes %}
+                        {% render '../notes.liquid', note: note, userId: userId, villager: villager %}
                     {% endfor %}
                 </div>
             </div>

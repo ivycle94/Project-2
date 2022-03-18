@@ -7,7 +7,7 @@ const mongoose = require('./connection')
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 
-const noteSchema = new Schema(
+const notesSchema = new Schema(
 	{
 		body: { 
             type: String, 
@@ -22,9 +22,9 @@ const noteSchema = new Schema(
 	{ timestamps: true }
 )
 
-// const Note = model('Note', noteSchema)
+// const Notes = model('Notes', notesSchema)
 
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = noteSchema
+module.exports = notesSchema

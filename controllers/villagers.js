@@ -198,7 +198,7 @@ router.get("/my_villagers/:id", (req, res) => {
     const villagerId = req.params.id
     // console.log("This is villagerId for show\n",villagerId)
     MyVillagers.findById(villagerId)
-        .populate("note.author", "username")
+        .populate("notes.author", "username")
         .then(villager => {
             // console.log("the villager we're looking at", villager)
             const username = req.session.username

@@ -2,7 +2,7 @@
 const mongoose = require('./connection')
 
 // import user model for populate
-const noteSchema = require('./note')
+const notesSchema = require('./notes')
 const User = require('./user')
 
 // destructure the schema and model constructors from mongoose
@@ -31,7 +31,7 @@ const myVillagersSchema = new Schema(
             type: Schema.Types.ObjectID,
             ref: 'User',
         },
-        note: [noteSchema]
+        notes: [notesSchema]
     },
 	{ timestamps: true }
 )

@@ -7,7 +7,7 @@ const middleware = require('./utils/middleware')
 //check
 const VillagersRouter = require('./controllers/villagers')
 //check
-const NoteRouter = require('./controllers/note')
+const NotesRouter = require('./controllers/notes')
 //check
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
@@ -28,7 +28,7 @@ middleware(app)
 //check
 app.use('/villagers', VillagersRouter)
 //check
-app.use('/note', NoteRouter)
+app.use('/notes', NotesRouter)
 //check
 app.use('/auth', UserRouter)
 

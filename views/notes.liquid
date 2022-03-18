@@ -1,11 +1,11 @@
 {% block content %}
     <div class="card mb-4 shadow">
         <div class="card-body">
-            <p>{{ text.body }}</p>
+            <p>{{ note.body }}</p>
             <div class="d-flex justify-content-between">
-                <small>author: {{ text.author.username }}</small>
-                {% if text.author == userId %}
-                    <form action="/note/delete/{{ villager.id }}/{{ text.id }}?_method=DELETE" method="POST">
+                <small>author: {{ note.author.username }}</small>
+                {% if note.author == userId %}
+                    <form action="/note/delete/{{ villager.id }}/{{ note.id }}?_method=DELETE" method="POST">
                         <input type="submit" value="X">
                     </form>
                 {% endif %}
