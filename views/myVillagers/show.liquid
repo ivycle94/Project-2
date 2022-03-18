@@ -2,15 +2,14 @@
 {% block content %}
 
     <h1>MY VILLAGERS SHOW.LIQUID</h1>
-    <img src="{{ villager.iconUrl }}" width="80" height="80">
-    <img src="{{ villager.imageUrl }}" width="80" height="80">
-    <h1>NAME:{{ villager.personality }}</h1>
-    <h1>BDAY:{{ villager.birthday }}</h1>
-    <h1>SPECIES{{ villager.species }}</h1>
-    <a href="/villagers/my_villagers/{{ villager.id }}/edit" class="btn btn-primary">Edit</a>
+    <img src="{{ animoo.iconUrl }}" width="80" height="80">
+    <img src="{{ animoo.imgUrl }}" width="80" height="80">
+    <h1>NAME:{{ animoo.name }}</h1>
+    <h1>BDAY:{{ animoo.birthday }}</h1>
+    <h1>SPECIES{{ animoo.species }}</h1>
+    <a href="/villagers/my_villagers/{{ animoo.id }}/edit" class="btn btn-primary">Edit</a>
     <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
         <input type="submit" value="Delete" class="btn btn-danger">
     </form>
-
 
 {% endblock %}
