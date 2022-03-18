@@ -2,6 +2,12 @@
 {% block content %}
 
     <h1>MY VILLAGERS SHOW.LIQUID</h1>
+    <img src="{{ villager.iconUrl }}" width="80" height="80">
+    <img src="{{ villager.imageUrl }}" width="80" height="80">
+    <h1>NAME:{{ villager.personality }}</h1>
+    <h1>BDAY:{{ villager.birthday }}</h1>
+    <h1>SPECIES{{ villager.species }}</h1>
+
 
 
 {% endblock %}

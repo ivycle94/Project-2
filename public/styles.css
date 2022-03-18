@@ -20,6 +20,13 @@ body {
     align-items: center;
 }
 
+.my-villagers {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: auto;
+}
+
 /* STYLING FOR CARDS ON INDEX VILLAGERS PAGE */
 .card {
     display: flex;
