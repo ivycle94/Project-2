@@ -141,11 +141,11 @@ router.post('/my_villagers', (req, res) => {
 // [[ USER's Villagers -> delete ]]-----------/
 router.delete("/my_villagers/:id", (req, res) => {
     const animooId = req.params.id
-    console.log("this is villager id for DELETE\n", animooId)
+    // console.log("this is villager id for DELETE\n", animooId)
     MyVillagers.findByIdAndRemove(animooId)
         .then(animoo => {
-            console.log("this is villager we DELETED\n", animooId)
-            res.redirect("/my_villagers/show")
+            // console.log("The animoo we deleted\n", animooId)
+            res.redirect("/villagers/my_villagers")
         })
         .catch(error => {
             console.log(error)

@@ -7,7 +7,7 @@
         {% for villager in MyVillagers limit:50 %}
         <div class="card cb1">
             <h5 class="card-header">{{ villager.name}}</h5>
-            <a href="/villagers/my_villagers/{{ villager.id}}"> <!-- not linking properly-->
+            <a href="/villagers/my_villagers/{{ villager.id}}"> 
                 <img id="villager-icon-link" src="{{ villager.iconUrl }}" width="80" height="80">
             </a>
         </div>
