@@ -205,7 +205,7 @@ router.get("/my_villagers/:id", (req, res) => {
 			const loggedIn = req.session.loggedIn
 			const userId = req.session.userId
 
-            console.log(villager)
+            // console.log(villager)
 			res.render('myVillagers/show', { villager, username, loggedIn, userId })
         })
         .catch(error => {

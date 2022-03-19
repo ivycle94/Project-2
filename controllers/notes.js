@@ -55,29 +55,31 @@ router.post("/villagers/my_villagers/:villagerId", (req, res) => {
 
 //--- DELETE ROUTE ---------------------------//
 // [[ USER's Villagers -> delete ]]-----------//
-router.delete('/delete/:villager/:commId', (req, res) => {
+router.delete('/delete/:villagerId/:notesId', (req, res) => {
+    //console.log(villager)
     // first we want to parse out our ids
     const villagerId = req.params.villagerId
-    const notesId = req.params.villager
-    // then we'll find the fruit
+    console.log("this is the villager ID:\n", villagerId)
+    const notesId = req.params.notesId
+    console.log("NOTES ID:\n",notesId)
     MyVillagers.findById(villagerId)
         .then(villager => {
-            console.log("this is the villager notes", villager.note)
-            const theNotes = villager.body.id(notesId)
-            console.log("this si the notes id",theNotes)
+            console.log("this is the villager notes", villager.notes)
+            const theNotes = villager.notes.id(notesId)
+            console.log("this is the comment:\n", theNotes)
             // only delete the comment if the user who is logged in is the comment's author
             if ( theNotes.author == req.session.userId) {
-                // then we'll delete the comment
+                console.log(theNotes.author)
+                // then we'll delete the note
                 theNotes.remove()
-                // return the saved fruit
+                // return the saved villager
                 return villager.save()
             } else {
                 return
             }
-
         })
         .then(villager => {
-            // redirect to the fruit show page
+            // redirect to the my_villagers show page
             res.redirect(`/villagers/my_villagers/${villager.id}`)
         })
         .catch(error => {
