@@ -153,6 +153,19 @@ router.get('/my_villagers/:id/edit', (req, res) => {
 		})
 })
 // User's villagers show <-update- edited form//
+router.put('/my_villagers/:id', (req, res) => {
+	const villagerId = req.params.id
+    console.log("THIS IS THE FRUIT ID:\n", villagerId)
+	MyVillagers.findByIdAndUpdate(villagerId, req.body)
+		// if successful -> redirect to the fruit page
+		.then((villager) => {
+			console.log('THE UPDATED VILLAGER:\n', villager)
+
+			res.redirect(`/villagers/my_villagers/${villager.id}`)
+		})
+		// if an error, display that
+		.catch((error) => res.json(error))
+})
 
 //--- DELETE ROUTE ---------------------------//
 // [[ USER's Villagers -> delete ]]-----------//
