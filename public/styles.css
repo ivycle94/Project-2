@@ -5,13 +5,13 @@ body {
 
 
 .nav-custom {
-    background-color: rgba(62,152,145); 
+    background-color: #265C53; 
 }
 
 .fav-button {
     text-align: center;
     color:whitesmoke;
-    background-color: rgba(62,152,145, 0.9); 
+    background-color: #409C8C; 
 }
 
 .all-villagers {
@@ -71,9 +71,10 @@ body {
     background-color: rgba(255, 255, 255, 0.1); 
 }
 
-/* .tom {
+.tom {
     position: absolute;
-} */
+    z-index: 1;
+}
 
 #villager-icon-link {
     border-radius: 50%;
@@ -84,4 +85,32 @@ body {
 #villager-icon-link:hover {
     transform: scale(1.3);
     z-index: 2;
+}
+
+.btn {
+   margin-top: 1em;
+}
+/* PICTURES */
+
+/* ========= LOGIN PAGE ========= */
+#welcomePicDiv {
+    position: absolute;
+    /* text-align: center; */
+    left: 30%;
+    margin: auto;
+    top: 0rem;
+    left:15%;
+    z-index: 1;    
+}
+
+#loginPicDiv {
+   
+    position: absolute;
+    /* text-align: center; */
+    left: 30%;
+    margin: auto;
+    top: 35rem;
+    width: 30%;
+    left:10%;
+    z-index: 1;  
 }

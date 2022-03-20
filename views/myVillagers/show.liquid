@@ -1,9 +1,9 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-    <h1>MY VILLAGERS SHOW.LIQUID</h1>
-    <img src="{{ villager.iconUrl }}" width="80" height="80">
-    <img src="{{ villager.imgUrl }}" width="80" height="80">
+    <h1>{{ villager.name }}</h1>
+    <!-- <img src="{{ villager.iconUrl }}"> -->
+    <img src="{{ villager.imgUrl }}" class="rounded-circle">
     <h1>NAME:{{ villager.name }}</h1>
     <h1>BDAY:{{ villager.birthday }}</h1>
     <h1>SPECIES{{ villager.species }}</h1>

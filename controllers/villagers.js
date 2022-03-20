@@ -163,8 +163,10 @@ router.put('/my_villagers/:id', (req, res) => {
 
 			res.redirect(`/villagers/my_villagers/${villager.id}`)
 		})
-		// if an error, display that
-		.catch((error) => res.json(error))
+        .catch(error => {
+            console.log(error)
+            res.json({ error })
+        })
 })
 
 //--- DELETE ROUTE ---------------------------//

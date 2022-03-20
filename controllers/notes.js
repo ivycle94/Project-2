@@ -31,11 +31,12 @@ router.use((req, res, next) => {
 //============================================//
 
 //--- POST ROUTE ----------------------------//
-// [[ USER's Villagers -> show ]]------------//
+// [[ USER's Notes -> show ]]----------------//
 router.post("/villagers/my_villagers/:villagerId", (req, res) => {
     const villagerId = req.params.villagerId
     // console.log('This is villagerId:\n', villagerId)
     req.body.author = req.session.userId
+    console.log("this is req.params\n",req.params)
     MyVillagers.findById(villagerId)
         .then(villager => {
             // then we'll send req.body to the comments array
@@ -54,7 +55,7 @@ router.post("/villagers/my_villagers/:villagerId", (req, res) => {
 })
 
 //--- DELETE ROUTE ---------------------------//
-// [[ USER's Villagers -> delete ]]-----------//
+// [[ USER's Notes -> delete ]]---------------//
 router.delete('/delete/:villagerId/:notesId', (req, res) => {
     //console.log(villager)
     // first we want to parse out our ids
