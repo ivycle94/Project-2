@@ -19,7 +19,6 @@
         <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
             <input type="submit" value="Delete" class="btn btn-danger">
         </form>
-        
         <div>
             <form action="/notes/villagers/my_villagers/{{ villager.id }}" method="POST">
                 <fieldset>
@@ -30,6 +29,7 @@
                 <input type="submit" class="btn btn-success" value="Add Notes">
             </form>
         </div>
+        <a class="toplink" href="/villagers/my_villagers">Back</a>
     </div>
     
     {% if villager.notes.length > 0%}

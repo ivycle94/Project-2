@@ -18,13 +18,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin:0% 10%;
 }
 
 .my-villagers {
     display: flex;
     justify-content: left;
     align-items: center;
-    margin: auto;
+    margin: 0% 10%;
 }
 
 h2 {
@@ -96,7 +97,11 @@ h2 {
    margin-top: 1em;
 }
 
-
+.toplink {
+    text-align: center;
+    display: inline-block;
+    margin-top: 1em;
+}
 /* ========= LOGIN PAGE ========= */
 #welcomePicDiv {
     position: absolute;
