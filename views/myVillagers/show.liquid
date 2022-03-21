@@ -1,41 +1,48 @@
 {% layout "layout.liquid" %}
 {% block content %}
-
-    <h1>{{ villager.name }}</h1>
-    <!-- <img src="{{ villager.iconUrl }}"> -->
-    <img src="{{ villager.imgUrl }}" class="rounded-circle">
-    <h1>NAME:{{ villager.name }}</h1>
-    <h1>BDAY:{{ villager.birthday }}</h1>
-    <h1>SPECIES{{ villager.species }}</h1>
-    <!-- <h1>NOTEs:{{ villager.notes[0].body }}</h1> -->
-    <a href="/villagers/my_villagers/{{ villager.id }}/edit" class="btn btn-primary">Edit</a>
-    <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
-        <input type="submit" value="Delete" class="btn btn-danger">
-    </form>
-
-    <div class="col-md-6">
-        <form action="/notes/villagers/my_villagers/{{ villager.id }}" method="POST">
-            <fieldset>
-                <legend>Add Notes</legend>
-                <label class="form-label">Notes: </label>
-                <input type="text" class="form-control" name="body" placeholder="Add a notes...">
-            </fieldset>
-            <input type="submit" class="btn btn-success" value="Add Notes">
+<div class="container-sm login-area lb1">
+    <div class="userShow">
+        <h1>{{ villager.name }}</h1>
+        <!-- <img src="{{ villager.iconUrl }}"> -->
+        <img src="{{ villager.imgUrl }}" class="rounded-circle"  width="100" height="100">
+        <p>Personality: {{ villager.personality }}</p>
+        <p>Birthday: {{ villager.birthday }}</p>
+        <p>Species: {{ villager.species }}</p>
+        <p>Gender: {{ villager.gender }}</p>
+        <p>Subtype: {{ villager.subtype }}</p>
+        <p>Hobby: {{ villager.hobby }}</p>
+        <p>Catch Phrase: "{{ villager.catchPhrase}}"</p>
+        <p> Bubble Color: {{ villager.bubbleColor }}</p>
+        <p>Text Color: {{ villager.textColor}}</p>
+        <!-- <h1>NOTEs:{{ villager.notes[0].body }}</h1> -->
+        <a href="/villagers/my_villagers/{{ villager.id }}/edit" class="btn btn-primary">Edit</a>
+        <form action="/villagers/my_villagers/{{villager.id}}?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" class="btn btn-danger">
         </form>
-    </div>
-
-    {% if villager.notes.length > 0%}
-            <!-- here we'll add our comment container -->
-            <div class="container-sm justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <!-- here we need to loop over the comments -->
-                    <!-- for every comment render a comment.liquid block -->
-                    {% for note in villager.notes %}
-                        {% render '../notes.liquid', note: note, userId: userId, villager: villager %}
-                    {% endfor %}
-                </div>
-            </div>
-        {% endif %}
+        
+        <div>
+            <form action="/notes/villagers/my_villagers/{{ villager.id }}" method="POST">
+                <fieldset>
     
-
+                    <label class="form-label">Notes: </label>
+                    <input type="text"  name="body" placeholder="Add a note...">
+                </fieldset>
+                <input type="submit" class="btn btn-success" value="Add Notes">
+            </form>
+        </div>
+    </div>
+    
+    {% if villager.notes.length > 0%}
+    <!-- here we'll add our comment container -->
+    <div class="container-sm justify-content-center">
+        <div>
+            <!-- here we need to loop over the comments -->
+            <!-- for every comment render a comment.liquid block -->
+            {% for note in villager.notes %}
+                {% render '../notes.liquid', note: note, userId: userId, villager: villager %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

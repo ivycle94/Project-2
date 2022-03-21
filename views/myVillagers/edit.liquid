@@ -2,7 +2,8 @@
 {% block content %}
 <div class="container-sm">
     <form action="/villagers/my_villagers/{{villager.id}}?_method=PUT" method="POST">
-        <fieldset disabled={true}>
+        <fieldset>
+        <!-- <fieldset disabled={true}>  TO DISABLE FORM-->
             <legend>Update {{ villager.name}}</legend>
             <img src="{{ villager.imgUrl }}" width="300" height="300">
             <label class="form-label">Name:</label>
@@ -54,39 +55,7 @@
                 value="{{ villager.catchPhrase }}" 
                 class="form-control"
             >
-            <label class="form-label">Gender:</label>
-            <input 
-                type="text" 
-                name="gender" 
-                value="{{ villager.gender }}" 
-                class="form-control"
-            >
-            <label class="form-label">Gender:</label>
-            <input 
-                type="text" 
-                name="gender" 
-                value="{{ villager.gender }}" 
-                class="form-control"
-            >
-            <label class="form-label">Amount:</label>
-            <input 
-                type="number" 
-                name="amount"
-                value="{{ example.amount }}"
-                class="form-control"
-            >
-            <label class="form-label">Ready:</label>
-        </fieldset>
-        <fieldset>
-            <input 
-                type="checkbox" 
-                name="ready" 
-                class="form-check-input"
-                {% if example.ready %}
-                    checked
-                {% endif %}
-            >
-        </fieldset>
+         
         <input type="submit" value="Save" class="btn btn-success">
     </form>
 </div>

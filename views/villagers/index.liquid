@@ -3,7 +3,7 @@
 <div>
     <h2 class="display-6"> All Villagers</h2>
     <div class="row all-villagers">
-        {% for villager in villagerArray limit:50 %}
+        {% for villager in villagerArray %}
         <div class="card cb1">
             <h5 class="card-header">{{villager["name"]["name-USen"] }}</h5>
             <a  href="/villagers/{{ villager["id"]}}">

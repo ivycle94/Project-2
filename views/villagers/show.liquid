@@ -1,18 +1,20 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
-    <!-- <h1>TEST</h1> -->
-   <h1>{{ villager["name"]["name-USen"] }}</h1>
-   <img src="{{ villager["image_uri"] }}" width="300" height="300">
-   <p>Personality: {{ villager["personality"] }}</p>
-   <p>Birthday: {{ villager["birthday-string"] }}</p>
-   <p>Species: {{ villager["species"] }}</p>
-   <p>Gender: {{ villager["gender"] }}</p>
-   <p>Subtype: {{ villager["subtype"] }}</p>
-   <p>Hobby: {{ villager["hobby"] }}</p>
-   <p>Catch Phrase: {{ villager["catch-prhase"] }}</p>
-   <p>Bubble Color: {{ villager["bubble-color"] }}</p>
-   <p>Text Color: {{ villager["text-color"] }}</p>
-   <p>Saying: {{ villager["saying"] }}</p>
+<div class="container-sm login-area lb1">
+    <div class="container-md">
+        <!-- <h1>TEST</h1> -->
+    <h1>{{ villager["name"]["name-USen"] }}</h1>
+    <img src="{{ villager["image_uri"] }}" class="rounded-circle" width="300" height="300">
+    <p>Personality: {{ villager["personality"] }}</p>
+    <p>Birthday: {{ villager["birthday-string"] }}</p>
+    <p>Species: {{ villager["species"] }}</p>
+    <p>Gender: {{ villager["gender"] }}</p>
+    <p>Subtype: {{ villager["subtype"] }}</p>
+    <p>Hobby: {{ villager["hobby"] }}</p>
+    <p>Catch Phrase: {{ villager["catch-prhase"] }}</p>
+    <p> Bubble Color: {{ villager["bubble-color"] }}</p>
+    <p>Text Color: {{ villager["text-color"] }}</p>
+    <p>Saying: "{{ villager["saying"] }}"</p>
+    </div>
 </div>
 {% endblock %}

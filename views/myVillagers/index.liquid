@@ -2,9 +2,9 @@
 {% block content %}
 
 <div>
-    <h2 class="display-6"> My Villagers</h2>
+    <h2 class="display-6" text-align="center"> My Villagers</h2>
     <div class="row my-villagers">
-        {% for villager in MyVillagers limit:50 %}
+        {% for villager in MyVillagers %}
         <div class="card cb1">
             <h5 class="card-header">{{ villager.name}}</h5>
             <a href="/villagers/my_villagers/{{ villager.id}}"> 

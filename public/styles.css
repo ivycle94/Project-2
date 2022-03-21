@@ -27,6 +27,11 @@ body {
     margin: auto;
 }
 
+h2 {
+    text-align: center;
+}
+
+
 /* STYLING FOR CARDS ON INDEX VILLAGERS PAGE */
 .card {
     display: flex;
@@ -90,7 +95,7 @@ body {
 .btn {
    margin-top: 1em;
 }
-/* PICTURES */
+
 
 /* ========= LOGIN PAGE ========= */
 #welcomePicDiv {
