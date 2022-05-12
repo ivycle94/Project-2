@@ -12,7 +12,7 @@ An ACNH (Animal Crossing: New Horizon) wiki app where users can look up specific
 - view the index page of all the villages currently available in the game.
 - click and view individual villagers to see specific information.
 - Add villagers to a favorites list.
-- Add or delete personal notes to favorite villagers.sdf
+- Add or delete personal notes to favorite villagers.
 
 # Installation Instructions
  1. Fork and clone this repository
@@ -43,3 +43,10 @@ An ACNH (Animal Crossing: New Horizon) wiki app where users can look up specific
 - Mongoose
 - Express
 - Node.js
+
+# Stretch Goals:
+- Add more data for users to view:
+    * Fish, Bugs, Fossils, Art, Items, etc.
+- Add more styling
+- Fix styling to be responsive
+- Coming soon...
