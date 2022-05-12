@@ -22,12 +22,24 @@ An ACNH (Animal Crossing: New Horizon) wiki app where users can look up specific
     *  `SECRET=<ThisCanBeAnything>`
  4. Inside the project folder, run `npm install`
  5. To start the server, run `npm start`
- 6. Navigate to `https://localhost:3000`
+ 6. Navigate to `https://localhost:3000`55
  7. The app should now up and running!
 
  # API Used:
  - Documentation: http://acnhapi.com/doc
  - Github Repo: https://github.com/alexislours/ACNHAPI
+
+# Routes Table:
+
+| Endpoint         | Component | `AuthenticatedRoute`? |
+|------------------|-------------------|-------|
+| `/auth/signup`       | `SignUp`    | No |
+| `/auth/login`       | `SignIn`    | Yes |
+| `/villagers`  | `Index`     | Yes |
+| `/villagers/:id`  | `Show`| Yes |
+| `/my_villagers`  | `Index`| Yes |
+| `/villagers/my_villagers/:id`  | `Show`| Yes |
+| `/my_villagers/:id/edit`  | `Update`| Yes |
 
 # ERD:
 ![layout](/public/img/erd2.jpg)
